@@ -3,6 +3,8 @@ package levelsoftware.io.androidplayground
 import android.app.Application
 import com.facebook.stetho.Stetho
 import com.squareup.leakcanary.LeakCanary
+import timber.log.Timber
+import timber.log.Timber.DebugTree
 
 class PlaygroundApplication : Application() {
 
@@ -14,6 +16,7 @@ class PlaygroundApplication : Application() {
 
     if (BuildConfig.DEBUG) {
       Stetho.initializeWithDefaults(this)
+      Timber.plant(DebugTree())
     }
   }
 }
