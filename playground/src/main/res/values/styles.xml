@@ -1,21 +1,31 @@
 <resources>
 
-  <style name="PlaygroundTheme" parent="Theme.AppCompat.Light.NoActionBar">
+  <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="colorPrimary">@color/primary</item>
     <item name="colorPrimaryDark">@color/primaryDark</item>
     <item name="colorAccent">@color/accent</item>
     <item name="android:windowBackground">@color/windowBackground</item>
+    <item name="android:actionOverflowButtonStyle">@style/LightOverflowButton</item>
   </style>
 
-  <style name="PlaygroundTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+  <style name="BasePopupOverlayTheme" parent="ThemeOverlay.AppCompat.Light">
     <item name="android:textSize">12sp</item>
   </style>
 
+  <style name="PlaygroundTheme" parent="BaseTheme"/>
+
+  <style name="PopupOverlayTheme" parent="BasePopupOverlayTheme"/>
+
   <style name="ToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
     <item name="android:textSize">14sp</item>
-    <item name="android:textColor">@color/primaryDark</item>
+    <item name="android:textColor">@color/white</item>
     <item name="android:maxLines">1</item>
     <item name="android:ellipsize">end</item>
   </style>
 
+  <style name="LightOverflowButton" parent="Widget.AppCompat.ActionButton.Overflow">
+    <item name="android:tint">@color/white</item>
+  </style>
+
 </resources>
+

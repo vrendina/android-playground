@@ -1,8 +1,9 @@
-package levelsoftware.io.androidplayground
+package io.levelsoftware.androidplayground
 
 import android.app.Application
 import com.facebook.stetho.Stetho
 import com.squareup.leakcanary.LeakCanary
+import levelsoftware.io.androidplayground.BuildConfig
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 

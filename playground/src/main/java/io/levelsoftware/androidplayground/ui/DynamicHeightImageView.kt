@@ -1,8 +1,9 @@
-package levelsoftware.io.androidplayground
+package io.levelsoftware.androidplayground.ui
 
 import android.content.Context
 import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
+import levelsoftware.io.androidplayground.R.styleable
 
 class DynamicHeightImageView(context: Context, attrs: AttributeSet?) : AppCompatImageView(context,
     attrs) {
@@ -13,11 +14,14 @@ class DynamicHeightImageView(context: Context, attrs: AttributeSet?) : AppCompat
   private var minHeight: Int = 0
 
   init {
-    val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DynamicHeightImageView)
+    val typedArray = context.obtainStyledAttributes(attrs,
+        styleable.DynamicHeightImageView)
 
-    aspectRatio = typedArray.getFloat(R.styleable.DynamicHeightImageView_aspectRatio,
+    aspectRatio = typedArray.getFloat(
+        styleable.DynamicHeightImageView_aspectRatio,
         defaultAspectRatio)
-    minHeight = typedArray.getDimensionPixelSize(R.styleable.DynamicHeightImageView_minHeight, 0)
+    minHeight = typedArray.getDimensionPixelSize(
+        styleable.DynamicHeightImageView_minHeight, 0)
 
     typedArray.recycle()
   }
