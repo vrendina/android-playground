@@ -26,31 +26,47 @@ class CustomView @JvmOverloads constructor(context: Context, attrs: AttributeSet
     linePaint.color = ContextCompat.getColor(context, R.color.primaryDark)
 
     textPaint.textSize = resources.displayMetrics.scaledDensity * fontSize
-
   }
 
-  override fun onDraw(canvas: Canvas) {
-    val canvasWidth = canvas.width
-    val canvasHeight = canvas.height
+  override fun onDraw(canvas: Canvas?) {
+    canvas?.let {
+      val canvasWidth = canvas.width
+      val canvasHeight = canvas.height
 
-    val centerX = canvasWidth * 0.5f
-    val centerY = canvasHeight * 0.5f
+      val contentWidth = canvas.width - paddingLeft - paddingRight
+      val contentHeight = canvas.height - paddingTop - paddingBottom
 
-    val radius = if (canvasWidth > canvasHeight) canvasHeight * 0.5f else canvasWidth * 0.5f
+      Timber.d("Padding $paddingLeft $paddingRight")
 
-    val textOffsetX = textPaint.measureText(textContent) * 0.5f
-    val textOffsetY = textPaint.fontMetrics.ascent * 0.35f
+      val centerX = canvasWidth * 0.5f
+      val centerY = canvasHeight * 0.5f
 
-    canvas.drawCircle(centerX, centerY, radius, backgroundPaint)
-    canvas.drawText(textContent, centerX - textOffsetX, centerY - textOffsetY, textPaint)
-    canvas.drawLine(centerX, 0f, centerX, canvasHeight.toFloat(), linePaint)
-    canvas.drawLine(0f, centerY, canvasWidth.toFloat(), centerY, linePaint)
+      val radius = if (contentHeight > contentWidth) contentHeight * 0.5f else contentWidth * 0.5f
+
+      val textOffsetX = textPaint.measureText(textContent) * 0.5f
+      val textOffsetY = textPaint.fontMetrics.ascent * 0.35f
+
+      canvas.drawCircle(centerX, centerY, radius, backgroundPaint)
+      canvas.drawText(textContent, centerX - textOffsetX, centerY - textOffsetY, textPaint)
+      canvas.drawLine(centerX, 0f, centerX, canvasHeight.toFloat(), linePaint)
+      canvas.drawLine(0f, centerY, canvasWidth.toFloat(), centerY, linePaint)
+    }
   }
 
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-    Timber.d("Called on Measure")
+    val maxTextWidth = textPaint.measureText(textContent)
+    val maxTextHeight = textPaint.fontMetrics.bottom - textPaint.fontMetrics.top
 
-    setMeasuredDimension(500, 200)
+    val contentWidth = maxTextWidth + paddingLeft + paddingRight
+    val contentHeight = maxTextHeight + paddingTop + paddingBottom
 
+    val contentSize = Math.round(Math.max(contentWidth, contentHeight))
+
+    val measuredWidth = resolveSize(contentSize, widthMeasureSpec)
+    val measuredHeight = resolveSize(contentSize, heightMeasureSpec)
+
+    Timber.d("onMeasure: $measuredWidth, $measuredHeight")
+
+    setMeasuredDimension(measuredWidth, measuredHeight)
   }
 }
