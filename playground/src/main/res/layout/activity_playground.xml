@@ -25,210 +25,46 @@
         app:titleEnabled="false"
         >
 
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          >
       <android.support.v7.widget.Toolbar
           android:id="@+id/toolbar"
           android:layout_width="match_parent"
           android:layout_height="?attr/actionBarSize"
           android:background="@color/accent"
+          android:elevation="@dimen/toolbar_elevation"
           app:contentInsetStartWithNavigation="0dp"
           app:popupTheme="@style/PopupOverlayTheme"
           app:titleTextAppearance="@style/ToolbarTitle"
-          android:elevation="@dimen/toolbar_elevation"
           />
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            style="@style/TopTabLayout"
-            android:layout_below="@+id/toolbar"
-            >
-
-          <android.support.design.widget.TabItem
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Tab 1"
-              />
-
-          <android.support.design.widget.TabItem
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Tab 2"
-              />
-
-        </android.support.design.widget.TabLayout>
-
-      </RelativeLayout>
 
     </android.support.design.widget.CollapsingToolbarLayout>
 
   </android.support.design.widget.AppBarLayout>
 
-  <RelativeLayout
-      android:id="@+id/content"
+  <android.support.v4.widget.NestedScrollView
+      android:id="@+id/nested_scroll_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:layout_below="@+id/sub_tab_divider"
+      android:clipToPadding="false"
+      android:paddingBottom="8dp"
+      android:paddingTop="8dp"
       app:layout_behavior="@string/appbar_scrolling_view_behavior"
       >
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/sub_tab_layout"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        style="@style/SubTabLayout"
-        >
-
-      <android.support.design.widget.TabItem
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Really Long Tab 1"
-          />
-
-      <android.support.design.widget.TabItem
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Long Tab 2"
-          />
-
-      <android.support.design.widget.TabItem
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Long Tab 3"
-          />
-
-      <android.support.design.widget.TabItem
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Really Long Tab 4"
-          />
-
-    </android.support.design.widget.TabLayout>
-
-    <View
-        android:id="@+id/sub_tab_divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/sub_tab_layout"
-        android:background="@color/outerListDivider"
-        />
-
-
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/nested_scroll_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/sub_tab_divider"
-        android:clipToPadding="false"
-        android:paddingBottom="8dp"
-        android:paddingTop="8dp"
+        android:orientation="vertical"
+        android:gravity="center"
         >
 
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          >
+      <io.levelsoftware.androidplayground.ui.CustomView
+          android:layout_width="300dp"
+          android:layout_height="300dp"
+          />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/outerListDivider"
-            />
+    </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="16dp"
-            android:text="@string/first_box"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:gravity="center"
-            android:hint="@string/app_name"
-            android:padding="16dp"
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/outerListDivider"
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/outerListDivider"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="16dp"
-            android:text="@string/second_box"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:gravity="center"
-            android:hint="@string/app_name"
-            android:padding="16dp"
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/outerListDivider"
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/outerListDivider"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="16dp"
-            android:text="@string/third_box"
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/outerListDivider"
-            />
-
-      </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-
-  </RelativeLayout>
-
-  <android.support.design.widget.BottomNavigationView
-      android:id="@+id/bottom_navigation"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@color/navigationBackground"
-      app:itemIconTint="@drawable/selector_navigation"
-      app:itemTextColor="@drawable/selector_navigation"
-      app:layout_anchor="@+id/nested_scroll_view"
-      app:layout_anchorGravity="bottom"
-      app:layout_behavior="io.levelsoftware.androidplayground.ui.BottomNavigationViewBehavior"
-      app:menu="@menu/navigation"
-      />
+  </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
