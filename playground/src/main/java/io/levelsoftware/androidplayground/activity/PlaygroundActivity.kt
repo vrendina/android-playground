@@ -1,25 +1,26 @@
 package io.levelsoftware.androidplayground.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.design.widget.AppBarLayout
+import android.support.design.internal.BottomNavigationItemView
+import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
-import io.levelsoftware.androidplayground.ui.hide
-import io.levelsoftware.androidplayground.ui.show
 import levelsoftware.io.androidplayground.R
 import levelsoftware.io.androidplayground.R.id
 import levelsoftware.io.androidplayground.R.layout
 import levelsoftware.io.androidplayground.R.string
 import timber.log.Timber
+import java.lang.Exception
 
-class PlaygroundActivity : AppCompatActivity(), OnNavigationItemSelectedListener, AppBarLayout.OnOffsetChangedListener {
+
+class PlaygroundActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
 
   private val toolbar by lazy { findViewById<Toolbar>(id.toolbar) }
-  private val appBarLayout by lazy { findViewById<AppBarLayout>(id.app_bar_layout) }
   private val bottomNavigation by lazy { findViewById<BottomNavigationView>(id.bottom_navigation) }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +31,8 @@ class PlaygroundActivity : AppCompatActivity(), OnNavigationItemSelectedListener
     supportActionBar?.title = getString(string.app_name)
     supportActionBar?.setDisplayShowTitleEnabled(true)
 
-    appBarLayout.addOnOffsetChangedListener(this)
     bottomNavigation.setOnNavigationItemSelectedListener(this)
+    disableShiftMode(bottomNavigation)
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -54,17 +55,26 @@ class PlaygroundActivity : AppCompatActivity(), OnNavigationItemSelectedListener
     return super.onOptionsItemSelected(item)
   }
 
-  override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
-    val maxScroll = appBarLayout?.totalScrollRange ?: 0
 
-    var percentage = 1 - Math.abs(verticalOffset).toFloat() / maxScroll.toFloat()
-    percentage = if (percentage < 0) 0f else percentage
-
-    Timber.d("Percentage: $percentage")
-
-    if (percentage > 0f) bottomNavigation.show()
-    if (percentage == 0f) bottomNavigation.hide()
+  // https://stackoverflow.com/a/41718722/5125812
+  @SuppressLint("RestrictedApi")
+  private fun disableShiftMode(view: BottomNavigationView) {
+    val menuView = view.getChildAt(0) as BottomNavigationMenuView
+    try {
+      val shiftingMode = menuView.javaClass.getDeclaredField("mShiftingMode")
+      shiftingMode.isAccessible = true
+      shiftingMode.setBoolean(menuView, false)
+      shiftingMode.isAccessible = false
+      for (i in 0 until menuView.childCount) {
+        val item = menuView.getChildAt(i) as BottomNavigationItemView
+        item.setShiftingMode(false)
+        item.setChecked(item.itemData.isChecked)
+      }
+    } catch (e: Exception) {
+      Timber.e(e)
+    }
   }
+
 }
 
 

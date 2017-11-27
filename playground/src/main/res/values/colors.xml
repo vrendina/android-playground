@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="primary">#F5F5F5</color>
-  <color name="primaryDark">#717171</color>
-  <color name="accent">#3F51B5</color>
+  <color name="primary">#135CBF</color>
+  <color name="primaryDark">#073676</color>
+  <color name="accent">#135CBF</color>
 
+  <color name="primaryText">#303030</color>
+  <color name="secondaryText">#717171</color>
+  <color name="tertiaryText">#9E9E9E</color>
+  <color name="activeTabText">@color/secondaryText</color>
+  <color name="inactiveTabText">@color/tertiaryText</color>
+
+  <color name="black">#000000</color>
   <color name="white">#FFFFFF</color>
   <color name="transparent">#00000000</color>
 
+  <color name="navigationBackground">#F5F5F5</color>
   <color name="windowBackground">#E7E7E7</color>
+  <color name="contentBackground">@color/white</color>
 
-  <color name="edgeEffect">#203F51B5</color>
-  <color name="rippleEffect">#203F51B5</color>
+  <color name="edgeEffect">#20135CBF</color>
+  <color name="rippleEffect">#20135CBF</color>
 
   <color name="outerListDivider">#C9C9C9</color>
+
 </resources>

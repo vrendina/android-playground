@@ -6,6 +6,9 @@
     <item name="android:colorControlHighlight">@color/rippleEffect</item>
   </style>
 
+  <style name="PlaygroundActivityTheme" parent="PlaygroundTheme">
+  </style>
+
   <style name="PopupOverlayTheme" parent="BasePopupOverlayTheme">
     <item name="android:colorControlHighlight">@color/rippleEffect</item>
   </style>

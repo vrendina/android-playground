@@ -22,4 +22,10 @@
       android:icon="@drawable/ic_camera_black_24dp"
       app:showAsAction="ifRoom"/>
 
+  <item
+      android:id="@+id/action_clip"
+      android:title="@string/clip"
+      android:icon="@drawable/ic_attachment_black_24dp"
+      app:showAsAction="ifRoom"/>
+
 </menu>

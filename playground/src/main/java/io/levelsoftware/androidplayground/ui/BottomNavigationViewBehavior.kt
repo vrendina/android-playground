@@ -11,26 +11,6 @@ import android.view.View
 import levelsoftware.io.androidplayground.R
 import timber.log.Timber
 
-fun BottomNavigationView.hide() {
-  val params = this.layoutParams as CoordinatorLayout.LayoutParams
-  if (this.layoutParams is CoordinatorLayout.LayoutParams) {
-    val behavior = params.behavior
-    if (behavior is BottomNavigationViewBehavior) {
-      behavior.hideNavigationView(this)
-    }
-  }
-}
-
-fun BottomNavigationView.show() {
-  val params = this.layoutParams as CoordinatorLayout.LayoutParams
-  if (this.layoutParams is CoordinatorLayout.LayoutParams) {
-    val behavior = params.behavior
-    if (behavior is BottomNavigationViewBehavior) {
-      behavior.showNavigationView(this)
-    }
-  }
-}
-
 class BottomNavigationViewBehavior(private val context: Context,
     attrs: AttributeSet) : CoordinatorLayout.Behavior<BottomNavigationView>(context, attrs) {
 
@@ -65,7 +45,7 @@ class BottomNavigationViewBehavior(private val context: Context,
        * is hidden when the keyboard opens.
        */
       Timber.d("Hiding the bar: $parentHeight $initialParentHeight")
-      child?.let { child.hide() }
+      child?.let { this.hideNavigationView(child) }
     }
     Timber.d("Called onLayoutChild: current -- $parentHeight initial -- $initialParentHeight")
 

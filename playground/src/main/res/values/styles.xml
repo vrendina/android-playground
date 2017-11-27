@@ -4,6 +4,11 @@
     <item name="colorPrimary">@color/primary</item>
     <item name="colorPrimaryDark">@color/primaryDark</item>
     <item name="colorAccent">@color/accent</item>
+    <item name="android:textColor">@color/primaryText</item>
+    <item name="android:editTextColor">@color/primaryText</item>
+    <item name="android:textColorPrimary">@color/primaryText</item>
+    <item name="android:textColorSecondary">@color/secondaryText</item>
+    <item name="android:textColorTertiary">@color/tertiaryText</item>
     <item name="android:windowBackground">@color/windowBackground</item>
     <item name="android:actionOverflowButtonStyle">@style/LightOverflowButton</item>
   </style>
@@ -13,6 +18,8 @@
   </style>
 
   <style name="PlaygroundTheme" parent="BaseTheme"/>
+
+  <style name="PlaygroundActivityTheme" parent="PlaygroundTheme"/>
 
   <style name="PopupOverlayTheme" parent="BasePopupOverlayTheme"/>
 
@@ -25,6 +32,33 @@
 
   <style name="LightOverflowButton" parent="Widget.AppCompat.ActionButton.Overflow">
     <item name="android:tint">@color/white</item>
+  </style>
+
+  <style name="BaseTabLayout" parent="Widget.Design.TabLayout">
+    <item name="tabIndicatorHeight">4dp</item>
+    <item name="tabTextAppearance">@style/TabLayoutTextAppearance</item>
+    <item name="tabSelectedTextColor">@color/activeTabText</item>
+    <item name="tabIndicatorColor">@color/accent</item>
+  </style>
+
+  <style name="TopTabLayout" parent="BaseTabLayout">
+    <item name="android:background">@color/navigationBackground</item>
+    <item name="tabMaxWidth">0dp</item>
+    <item name="tabGravity">fill</item>
+    <item name="tabMode">fixed</item>
+  </style>
+
+  <style name="SubTabLayout" parent="BaseTabLayout">
+    <item name="android:background">@color/contentBackground</item>
+    <item name="tabIndicatorHeight">2dp</item>
+    <item name="tabIndicatorColor">@color/outerListDivider</item>
+    <item name="tabMode">scrollable</item>
+  </style>
+
+  <style name="TabLayoutTextAppearance" parent="TextAppearance.Design.Tab">
+    <item name="android:textSize">12sp</item>
+    <item name="textAllCaps">true</item>
+    <item name="android:textColor">@color/inactiveTabText</item>
   </style>
 
 </resources>
