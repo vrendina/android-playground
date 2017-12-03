@@ -3,7 +3,7 @@ buildscript {
     compileSdkVersion         = 27
     minSdkVersion             = 19
     targetSdkVersion          = compileSdkVersion
-    kotlinVersion             = '1.1.60'
+    kotlinVersion             = '1.2.0'
     androidSupportVersion     = '27.0.1'
     constraintLayoutVersion   = '1.0.2'
     timberVersion             = '4.5.1'
