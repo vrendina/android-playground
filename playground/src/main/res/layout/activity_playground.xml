@@ -63,63 +63,33 @@
           android:layout_height="wrap_content"
           android:background="@color/white"
           >
-        <io.levelsoftware.androidplayground.ui.CustomView
-            android:layout_width="25dp"
-            android:layout_height="50dp"
-            />
-      </FrameLayout>
-      <FrameLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="@color/white"
-          >
-        <io.levelsoftware.androidplayground.ui.CustomView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:padding="8dp"
-
-            />
-      </FrameLayout>
-      <FrameLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="@color/white"
-          android:layout_margin="16dp"
-          >
-        <io.levelsoftware.androidplayground.ui.CustomView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:padding="16dp"
-            />
-      </FrameLayout>
-      <FrameLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="@color/white"
-          >
-        <io.levelsoftware.androidplayground.ui.CustomView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-      </FrameLayout>
-      <FrameLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="@color/white"
-          >
-        <io.levelsoftware.androidplayground.ui.CustomView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-      </FrameLayout>
-      <FrameLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="@color/white"
-          >
-        <io.levelsoftware.androidplayground.ui.CustomView
+        <io.levelsoftware.androidplayground.ui.MathOperationView
+            android:id="@+id/mathOperationView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:lineColor="@color/accent"
+            app:lineThickness="2dp"
+            app:textSize="14sp"
+            app:textColor="@color/secondaryText"
+            android:padding="8dp"
+            />
+      </FrameLayout>
+
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/white"
+          android:layout_marginTop="16dp"
+          >
+        <io.levelsoftware.androidplayground.ui.MathOperationView
+            android:id="@+id/mathOperationViewFixed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:lineColor="@color/accent"
+            app:lineThickness="2dp"
+            app:textSize="12sp"
+            app:textColor="@color/secondaryText"
+            android:padding="8dp"
             />
       </FrameLayout>
 

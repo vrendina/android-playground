@@ -28,29 +28,27 @@ class CustomView @JvmOverloads constructor(context: Context, attrs: AttributeSet
     textPaint.textSize = resources.displayMetrics.scaledDensity * fontSize
   }
 
-  override fun onDraw(canvas: Canvas?) {
-    canvas?.let {
-      val canvasWidth = canvas.width
-      val canvasHeight = canvas.height
+  override fun onDraw(canvas: Canvas) {
+    val canvasWidth = canvas.width
+    val canvasHeight = canvas.height
 
-      val contentWidth = canvas.width - paddingLeft - paddingRight
-      val contentHeight = canvas.height - paddingTop - paddingBottom
+    val contentWidth = canvas.width - paddingLeft - paddingRight
+    val contentHeight = canvas.height - paddingTop - paddingBottom
 
-      Timber.d("Padding $paddingLeft $paddingRight")
+    Timber.d("Padding $paddingLeft $paddingRight")
 
-      val centerX = canvasWidth * 0.5f
-      val centerY = canvasHeight * 0.5f
+    val centerX = canvasWidth * 0.5f
+    val centerY = canvasHeight * 0.5f
 
-      val radius = if (contentHeight > contentWidth) contentHeight * 0.5f else contentWidth * 0.5f
+    val radius = if (contentHeight > contentWidth) contentHeight * 0.5f else contentWidth * 0.5f
 
-      val textOffsetX = textPaint.measureText(textContent) * 0.5f
-      val textOffsetY = textPaint.fontMetrics.ascent * 0.35f
+    val textOffsetX = textPaint.measureText(textContent) * 0.5f
+    val textOffsetY = textPaint.fontMetrics.ascent * 0.35f
 
-      canvas.drawCircle(centerX, centerY, radius, backgroundPaint)
-      canvas.drawText(textContent, centerX - textOffsetX, centerY - textOffsetY, textPaint)
-      canvas.drawLine(centerX, 0f, centerX, canvasHeight.toFloat(), linePaint)
-      canvas.drawLine(0f, centerY, canvasWidth.toFloat(), centerY, linePaint)
-    }
+    canvas.drawCircle(centerX, centerY, radius, backgroundPaint)
+    canvas.drawText(textContent, centerX - textOffsetX, centerY - textOffsetY, textPaint)
+    canvas.drawLine(centerX, 0f, centerX, canvasHeight.toFloat(), linePaint)
+    canvas.drawLine(0f, centerY, canvasWidth.toFloat(), centerY, linePaint)
   }
 
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

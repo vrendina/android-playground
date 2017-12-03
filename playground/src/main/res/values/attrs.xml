@@ -4,4 +4,11 @@
     <attr name="aspectRatio" format="float"/>
     <attr name="minHeight" format="dimension"/>
   </declare-styleable>
+
+  <declare-styleable name="MathOperationView">
+    <attr name="textSize" format="dimension"/>
+    <attr name="textColor" format="color"/>
+    <attr name="lineColor" format="color"/>
+    <attr name="lineThickness" format="dimension"/>
+  </declare-styleable>
 </resources>
