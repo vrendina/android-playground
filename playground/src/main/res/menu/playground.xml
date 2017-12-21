@@ -8,4 +8,10 @@
       android:title="@string/action"
       app:showAsAction="never"/>
 
+  <item
+      android:id="@+id/secondaryAction"
+      android:orderInCategory="99"
+      android:title="@string/secondaryAction"
+      app:showAsAction="never"/>
+
 </menu>

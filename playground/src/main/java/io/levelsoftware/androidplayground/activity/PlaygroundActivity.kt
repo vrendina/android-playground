@@ -3,10 +3,13 @@ package io.levelsoftware.androidplayground.activity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_playground.mathOperationView
-import kotlinx.android.synthetic.main.activity_playground.mathOperationViewFixed
+import android.widget.Toast
+import io.levelsoftware.androidplayground.extension.random
+import io.levelsoftware.androidplayground.ui.ScrollingStaggeredGridLayoutManager
+import kotlinx.android.synthetic.main.activity_playground.recyclerView
 import kotlinx.android.synthetic.main.activity_playground.toolbar
 import levelsoftware.io.androidplayground.R
 import levelsoftware.io.androidplayground.R.id
@@ -25,8 +28,9 @@ class PlaygroundActivity : AppCompatActivity(), OnNavigationItemSelectedListener
     supportActionBar?.title = getString(string.app_name)
     supportActionBar?.setDisplayShowTitleEnabled(true)
 
-    mathOperationView.setValues("$250", "$125", "–")
-    mathOperationViewFixed.setValues("$250,000", "$500,000,000", "÷")
+    recyclerView.layoutManager = ScrollingStaggeredGridLayoutManager(1,
+        StaggeredGridLayoutManager.VERTICAL)
+    recyclerView.adapter = PlaygroundAdapter()
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -42,9 +46,13 @@ class PlaygroundActivity : AppCompatActivity(), OnNavigationItemSelectedListener
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       id.action -> {
-        mathOperationView.setValues("$150,000", "$1,500,000,000")
-        mathOperationViewFixed.setValues("$150,000", "$1,500,000,000")
+        recyclerView.smoothScrollToPosition(0)
         return true
+      }
+      id.secondaryAction -> {
+        val position = (0..50).random()
+        Toast.makeText(this, "Scrolling to $position", Toast.LENGTH_SHORT).show()
+        recyclerView.smoothScrollToPosition(position)
       }
     }
     return super.onOptionsItemSelected(item)
