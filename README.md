@@ -6,5 +6,5 @@ Each branch contains a different 'playground' for testing.
 
 ### Branches
 
-- `kotlin` - Learning basic Kotlin syntax
-- `recyclerview` - Advanced `RecyclerView` usage including `DiffUtil`, `ItemDecoration`, and animations.
+- `customview` - Creation of a custom Android view for showing math operations
+- `smoothscroll` - Smooth scrolling with nested RecyclerViews
