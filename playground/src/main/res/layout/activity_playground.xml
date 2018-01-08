@@ -9,62 +9,53 @@
     >
 
   <android.support.design.widget.AppBarLayout
-      android:id="@+id/app_bar_layout"
+      android:id="@+id/appBarLayout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:stateListAnimator="@animator/appbar_elevation"
       tools:targetApi="lollipop"
       >
 
-    <android.support.design.widget.CollapsingToolbarLayout
-        android:id="@+id/collapsing_container"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-        app:statusBarScrim="@color/transparent"
-        app:titleEnabled="false"
         >
 
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          >
       <android.support.v7.widget.Toolbar
           android:id="@+id/toolbar"
           android:layout_width="match_parent"
           android:layout_height="?attr/actionBarSize"
           android:background="@color/accent"
+          android:elevation="@dimen/toolbar_elevation"
           app:contentInsetStartWithNavigation="0dp"
           app:popupTheme="@style/PopupOverlayTheme"
           app:titleTextAppearance="@style/ToolbarTitle"
-          android:elevation="@dimen/toolbar_elevation"
           />
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout"
+      <android.support.design.widget.TabLayout
+          android:id="@+id/tabLayout"
+          android:layout_width="match_parent"
+          android:layout_height="42dp"
+          style="@style/TopTabLayout"
+          >
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            style="@style/TopTabLayout"
-            android:layout_below="@+id/toolbar"
-            >
+            android:text="Tab 1"
+            />
 
-          <android.support.design.widget.TabItem
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Tab 1"
-              />
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tab 2"
+            />
 
-          <android.support.design.widget.TabItem
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Tab 2"
-              />
+      </android.support.design.widget.TabLayout>
 
-        </android.support.design.widget.TabLayout>
-
-      </RelativeLayout>
-
-    </android.support.design.widget.CollapsingToolbarLayout>
+    </LinearLayout>
 
   </android.support.design.widget.AppBarLayout>
 
@@ -76,9 +67,9 @@
       >
 
     <android.support.design.widget.TabLayout
-        android:id="@+id/sub_tab_layout"
-        android:layout_height="wrap_content"
+        android:id="@+id/subTabLayout"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         style="@style/SubTabLayout"
         >
 
@@ -112,7 +103,7 @@
         android:id="@+id/sub_tab_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/sub_tab_layout"
+        android:layout_below="@+id/subTabLayout"
         android:background="@color/outerListDivider"
         />
 
@@ -219,7 +210,7 @@
   </RelativeLayout>
 
   <android.support.design.widget.BottomNavigationView
-      android:id="@+id/bottom_navigation"
+      android:id="@+id/bottomNavigation"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:background="@color/navigationBackground"

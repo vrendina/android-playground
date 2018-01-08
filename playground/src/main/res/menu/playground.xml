@@ -3,9 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
   <item
-      android:id="@+id/action"
-      android:orderInCategory="99"
-      android:title="@string/action"
+      android:id="@+id/hide"
+      android:title="Hide Tabs"
+      app:showAsAction="never"/>
+
+  <item
+      android:id="@+id/show"
+      android:title="Show Tabs"
       app:showAsAction="never"/>
 
 </menu>
