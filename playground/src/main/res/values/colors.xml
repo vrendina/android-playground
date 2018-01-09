@@ -21,6 +21,7 @@
   <color name="edgeEffect">#20135CBF</color>
   <color name="rippleEffect">#20135CBF</color>
 
-  <color name="outerListDivider">#C9C9C9</color>
+  <color name="outerListDivider">#32CD32</color>
+  <color name="innerListDivider">@color/accent</color>
 
 </resources>

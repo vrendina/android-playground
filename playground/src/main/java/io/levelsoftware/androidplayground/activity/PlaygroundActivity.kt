@@ -3,12 +3,13 @@ package io.levelsoftware.androidplayground.activity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import io.levelsoftware.androidplayground.extension.random
-import io.levelsoftware.androidplayground.ui.ScrollingStaggeredGridLayoutManager
+import io.levelsoftware.androidplayground.ui.expandinglist.ExpandingItemAnimator
+import io.levelsoftware.androidplayground.ui.expandinglist.ExpandingLinearLayoutManager
+import io.levelsoftware.androidplayground.ui.expandinglist.ExpandingListItemDecoration
 import kotlinx.android.synthetic.main.activity_playground.recyclerView
 import kotlinx.android.synthetic.main.activity_playground.toolbar
 import levelsoftware.io.androidplayground.R
@@ -28,9 +29,10 @@ class PlaygroundActivity : AppCompatActivity(), OnNavigationItemSelectedListener
     supportActionBar?.title = getString(string.app_name)
     supportActionBar?.setDisplayShowTitleEnabled(true)
 
-    recyclerView.layoutManager = ScrollingStaggeredGridLayoutManager(1,
-        StaggeredGridLayoutManager.VERTICAL)
     recyclerView.adapter = PlaygroundAdapter()
+    recyclerView.layoutManager = ExpandingLinearLayoutManager(this)
+    recyclerView.addItemDecoration(ExpandingListItemDecoration(this))
+    recyclerView.itemAnimator = ExpandingItemAnimator()
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {

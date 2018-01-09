@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingTop="16dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    >
+
+  <TextView
+      android:id="@+id/titleTextView"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="16dp"
+      android:layout_marginTop="2dp"
+      android:paddingBottom="16dp"
+      app:layout_constraintEnd_toStartOf="@+id/expandingImageView"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Position 32"
+      />
+
+  <ImageView
+      android:id="@+id/expandingImageView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:contentDescription="Expand"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_expand_more_black_24dp"
+      />
+
+  <TextView
+      android:id="@+id/expandingTextView"
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:text="@string/first_box"
+      android:textColor="@color/secondaryText"
+      android:textSize="14dp"
+      android:visibility="gone"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+      android:paddingBottom="16dp"
+      />
+
+</android.support.constraint.ConstraintLayout>
