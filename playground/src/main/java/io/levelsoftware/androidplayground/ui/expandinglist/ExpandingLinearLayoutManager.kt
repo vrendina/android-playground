@@ -8,13 +8,13 @@ import android.support.v7.widget.RecyclerView.State
 
 class ExpandingLinearLayoutManager(context: Context) : LinearLayoutManager(context) {
 
+  private val scroller = CustomSmoothScroller(context)
+
   override fun supportsPredictiveItemAnimations(): Boolean = true
 
   override fun smoothScrollToPosition(recyclerView: RecyclerView, state: State, position: Int) {
-    CustomSmoothScroller(recyclerView.context).apply {
-      targetPosition = position
-      startSmoothScroll(this)
-    }
+    scroller.targetPosition = position
+    startSmoothScroll(scroller)
   }
 
   private inner class CustomSmoothScroller(context: Context) : LinearSmoothScroller(context) {

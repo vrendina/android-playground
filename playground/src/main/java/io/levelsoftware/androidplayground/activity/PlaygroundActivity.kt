@@ -1,12 +1,12 @@
 package io.levelsoftware.androidplayground.activity
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import io.levelsoftware.androidplayground.extension.random
+import io.levelsoftware.androidplayground.ui.CustomURLSpan.OnInlineLinkClickListener
 import io.levelsoftware.androidplayground.ui.expandinglist.ExpandingItemAnimator
 import io.levelsoftware.androidplayground.ui.expandinglist.ExpandingLinearLayoutManager
 import io.levelsoftware.androidplayground.ui.expandinglist.ExpandingListItemDecoration
@@ -19,7 +19,9 @@ import levelsoftware.io.androidplayground.R.string
 import timber.log.Timber
 
 
-class PlaygroundActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
+class PlaygroundActivity : AppCompatActivity(), OnInlineLinkClickListener {
+
+  private val adapter = PlaygroundAdapter(this)
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -29,7 +31,7 @@ class PlaygroundActivity : AppCompatActivity(), OnNavigationItemSelectedListener
     supportActionBar?.title = getString(string.app_name)
     supportActionBar?.setDisplayShowTitleEnabled(true)
 
-    recyclerView.adapter = PlaygroundAdapter()
+    recyclerView.adapter = adapter
     recyclerView.layoutManager = ExpandingLinearLayoutManager(this)
     recyclerView.addItemDecoration(ExpandingListItemDecoration(this))
     recyclerView.itemAnimator = ExpandingItemAnimator()
@@ -37,11 +39,6 @@ class PlaygroundActivity : AppCompatActivity(), OnNavigationItemSelectedListener
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     menuInflater.inflate(R.menu.playground, menu)
-    return true
-  }
-
-  override fun onNavigationItemSelected(item: MenuItem): Boolean {
-    Timber.d("Selected menu item ${item.title}")
     return true
   }
 
@@ -60,6 +57,11 @@ class PlaygroundActivity : AppCompatActivity(), OnNavigationItemSelectedListener
     return super.onOptionsItemSelected(item)
   }
 
+  override fun onLinkClick(url: String) {
+    Timber.d("Clicked on link $url")
+    adapter.setExpanded(4, true)
+    recyclerView.smoothScrollToPosition(4)
+  }
 }
 
 
