@@ -23,4 +23,6 @@
 
   <color name="outerListDivider">#C9C9C9</color>
 
+  <color name="swipeDeleteBackground">#DE6461</color>
+
 </resources>

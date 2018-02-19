@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
   compileSdkVersion rootProject.compileSdkVersion
@@ -25,12 +26,18 @@ android {
       targetCompatibility JavaVersion.VERSION_1_8
     }
   }
+
+  androidExtensions {
+    experimental = true
+  }
 }
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
   testImplementation 'junit:junit:4.12'
+  testImplementation 'com.squareup.okhttp3:mockwebserver:3.9.1'
+
   androidTestImplementation 'com.android.support.test:runner:1.0.1'
   androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
@@ -44,9 +51,23 @@ dependencies {
   implementation "com.jakewharton.timber:timber:$timberVersion"
   implementation "com.facebook.stetho:stetho:$stethoVersion"
 
-  implementation "com.jakewharton:butterknife:$butterknifeVersion"
-  annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
-
   debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
   releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanaryVersion"
+
+  implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+  implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+  implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+  implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+  implementation "android.arch.lifecycle:viewmodel:1.1.0"
+  implementation "android.arch.persistence.room:rxjava2:1.0.0"
+  implementation "android.arch.persistence.room:runtime:1.0.0"
+
+  kapt "android.arch.persistence.room:compiler:1.0.0"
+
+  implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+  implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+
+  implementation 'com.google.dagger:dagger-android:2.14.1'
+  kapt 'com.google.dagger:dagger-android-processor:2.11'
 }

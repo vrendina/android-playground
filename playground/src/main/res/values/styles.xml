@@ -39,20 +39,10 @@
     <item name="tabTextAppearance">@style/TabLayoutTextAppearance</item>
     <item name="tabSelectedTextColor">@color/activeTabText</item>
     <item name="tabIndicatorColor">@color/accent</item>
-  </style>
-
-  <style name="TopTabLayout" parent="BaseTabLayout">
     <item name="android:background">@color/navigationBackground</item>
     <item name="tabMaxWidth">0dp</item>
     <item name="tabGravity">fill</item>
     <item name="tabMode">fixed</item>
-  </style>
-
-  <style name="SubTabLayout" parent="BaseTabLayout">
-    <item name="android:background">@color/contentBackground</item>
-    <item name="tabIndicatorHeight">2dp</item>
-    <item name="tabIndicatorColor">@color/outerListDivider</item>
-    <item name="tabMode">scrollable</item>
   </style>
 
   <style name="TabLayoutTextAppearance" parent="TextAppearance.Design.Tab">
